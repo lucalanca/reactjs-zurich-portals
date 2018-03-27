@@ -1032,18 +1032,6 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-bemto-button@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/bemto-button/-/bemto-button-0.4.0.tgz#3bf95bd20587701ecda9b0605313000633b203d0"
-  dependencies:
-    bemto-components "^2.0.0"
-
-bemto-components@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/bemto-components/-/bemto-components-2.0.0.tgz#1c621518ad266ec2e4ee3f4e9fc79c94097b954a"
-  dependencies:
-    react "16.1.1"
-
 big.js@^3.1.3:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-3.2.0.tgz#a5fc298b81b9e0dca2e458824784b65c52ba588e"
@@ -5719,15 +5707,6 @@ react-scripts@1.1.1:
     whatwg-fetch "2.0.3"
   optionalDependencies:
     fsevents "^1.1.3"
-
-react@16.1.1:
-  version "16.1.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.1.1.tgz#d5c4ef795507e3012282dd51261ff9c0e824fe1f"
-  dependencies:
-    fbjs "^0.8.16"
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.0"
 
 react@^16.2.0:
   version "16.2.0"

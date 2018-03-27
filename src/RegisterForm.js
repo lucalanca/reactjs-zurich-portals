@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Button from "./Button";
 
 const Field = styled.div`
-  color: #22292f;
   margin-bottom: 1.5rem;
 `;
 
@@ -11,7 +10,7 @@ const Label = styled.label`
   display: block;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #606f7b;
+  color: hsl(235, 20%, 43%);
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -20,7 +19,7 @@ const Label = styled.label`
 const Input = styled.input`
   display: block;
   width: 100%;
-  color: #22292f;
+  color: hsl(235, 16%, 16%);
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
@@ -29,15 +28,15 @@ const Input = styled.input`
   border-style: solid;
   border-width: 1px;
   border-radius: 0.25rem;
-  border-color: #f1f5f8;
-  background-color: #f1f5f8;
+  border-color: hsl(235, 33%, 92%);
+  background-color: hsl(235, 45%, 96%);
   appearance: none;
 `;
 
 const Hint = styled.p`
   font-style: italic;
   font-size: 0.75rem;
-  color: #8795a1;
+  color: hsl(235, 12%, 58%);
   margin: 0;
   line-height: 1.5;
   font-weight: 400;

@@ -1,32 +1,54 @@
-import BemtoButton from "bemto-button";
+import styled from "styled-components";
 
 // That's now the proper usage:
-const Button = BemtoButton.extend`
-  border-radius: 9em;
-  background: linear-gradient(#fff, #eee);
-  box-shadow: 0 1px 3px -3px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.3);
+const Button = styled.button`
+  color: #fff;
+  background: #6772e5;
+  
+  white-space: nowrap;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 14px;
+    box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .025em;
+    text-decoration: none;
+    transition: all .15s ease;
+    border: 0;
 
-  /* Apply layout-changing styles here */
-  &__Content {
-    padding: 5px 10px;
-  }
+    cursor: pointer;
+
+
 
   /* All the simple states */
   &:hover {
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    background-color: #7795f8;
+    transform: translateY(-1px);
+    box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
   }
+  
   &:active {
-    background: linear-gradient(#ccc, #fff);
+    color: #e6ebf1;
+    background-color: #555abf;
   }
-  &_disabled {
-    opacity: 0.5;
-  }
+  &:focus {
+    color: #fff;
+    background-color: #7795f8;
+    
+    box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+}
 
-  /* Keyboard-only, won't show on click! */
-  ${BemtoButton.focusCSS(`
-    margin: -1px;
-    box-shadow: 0 0 5px 5px pink;
-  `)};
+
+
+
+
+
+  }
 `;
 
 export default Button;
