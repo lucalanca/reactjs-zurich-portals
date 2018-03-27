@@ -15,7 +15,7 @@ const ModalContainer = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6);
   z-index: 2;
 
   width: 100vw;
@@ -29,6 +29,8 @@ const ModalContainer = styled.div`
 
 const ModalCard = styled.div`
   background: rgb(255, 255, 255);
+  box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+  border-radius: 4px;
 `;
 
 const ModalHeader = styled.div`
@@ -134,20 +136,25 @@ class App extends Component {
     isOpened: false
   };
 
+  constructor(props) {
+    super(props);
+    this.toggleModal = this.toggleModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  toggleModal = () =>
+    this.setState(({ isOpened }) => ({ isOpened: !isOpened }));
+
+  closeModal = () => this.setState({ isOpened: false });
+
   render() {
     const { isOpened } = this.state;
     return (
       <main>
-        <Button
-          onClick={() =>
-            this.setState(({ isOpened }) => ({ isOpened: !isOpened }))
-          }
-        >
-          Open Modal
-        </Button>
+        <Button onClick={this.toggleModal}>Open Modal</Button>
         <Modal
           isOpened={isOpened}
-          onClose={() => this.setState({ isOpened: false })}
+          onClose={this.closeModal}
           title="Registration Form"
         >
           <RegisterForm />
