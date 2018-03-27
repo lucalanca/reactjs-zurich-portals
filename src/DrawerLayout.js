@@ -6,48 +6,11 @@ import MdClose from "react-icons/lib/md/close";
 
 const DRAWER_WIDTH = `80px`;
 
-// THIS WORKS!!!
-// const Drawer = styled.div`
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   bottom: 0;
-//   width: ${DRAWER_WIDTH};
-//   background: #1a202c;
-//   color: #fff;
-//   transition: transform 200ms ease-out;
-// `;
-
-// const Content = styled.div`
-//   position: fixed;
-//   right: 0;
-//   left: ${DRAWER_WIDTH};
-//   top: 0;
-//   bottom: 0;
-//   transition: transform 200ms ease-out, right 200ms ease-out;
-// `;
-//
-//
-// const Container = styled.div`
-//   width: 100%;
-//   height: 100%;
-
-//   > ${Drawer} {
-//     transform: ${({ isOpened }) =>
-//       isOpened ? `none` : `translateX(-${DRAWER_WIDTH})`};
-//   }
-
-//   > ${Content} {
-//     transform: ${({ isOpened }) =>
-//       isOpened ? `none` : `translateX(-${DRAWER_WIDTH})`};
-//     right: ${({ isOpened }) => (isOpened ? `0` : `-${DRAWER_WIDTH}`)};
-//   }
-// `;
-
 const Drawer = styled.div`
   width: ${DRAWER_WIDTH};
   background: #1a202c;
   color: #fff;
+  flex-shrink: 0;
 `;
 
 const Content = styled.div`
@@ -89,15 +52,14 @@ const Container = styled.div`
 
   transform: ${({ isOpened }) =>
     isOpened ? `none` : `translateX(-${DRAWER_WIDTH})`};
-  transition: transform 200ms ease-out;
+  transition: transform 200ms ease-out, padding-right 200ms ease-out;
+  padding-right: ${({ isOpened }) => (isOpened ? `${DRAWER_WIDTH}` : `0`)};
 
   > ${Drawer} {
   }
 
   > ${Content} {
     flex-grow: 1;
-    margin-right: ${({ isOpened }) => (isOpened ? `${DRAWER_WIDTH}` : `0`)};
-    ${"" /* margin-right: ${({ isOpened }) => (isOpened ? `${DRAWER_WIDTH}` : `0`)}; */};
   }
 
   ${Close} {

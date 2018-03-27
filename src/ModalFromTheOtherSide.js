@@ -9,8 +9,8 @@ const modalRoot = document.getElementById("modalRoot");
 export default class Modal extends Component {
   static propTypes = {
     isOpened: PropTypes.bool,
+    triggerEl: PropTypes.element,
     title: PropTypes.string.isRequired,
-    triggerEl: PropTypes.element.isRequired,
     children: PropTypes.element.isRequired,
     onClose: PropTypes.func.isRequired
   };
@@ -32,7 +32,7 @@ export default class Modal extends Component {
 
   onClose = evt => {
     this.props.onClose(evt);
-    this.props.triggerEl.focus();
+    this.props.triggerEl && this.props.triggerEl.focus();
   };
 
   // NEW STUFF

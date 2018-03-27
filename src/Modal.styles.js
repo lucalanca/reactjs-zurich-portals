@@ -23,6 +23,7 @@ export const ModalCard = styled.div`
   box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
   border-radius: 4px;
   min-width: 300px;
+  max-width: 90vw;
 `;
 
 export const ModalHeader = styled.div`
