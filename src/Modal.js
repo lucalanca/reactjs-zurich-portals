@@ -6,7 +6,7 @@ import * as ModalStyle from "./Modal.styles";
 export default class Modal extends Component {
   static propTypes = {
     isOpened: PropTypes.bool,
-    triggerEl: PropTypes.element,
+    triggerEl: PropTypes.instanceOf(HTMLButtonElement),
     title: PropTypes.string.isRequired,
     children: PropTypes.element.isRequired,
     onClose: PropTypes.func.isRequired

@@ -61,7 +61,7 @@ export default () => (
     <Field>
       <Label for="password">Password</Label>
       <Input id="password" type="password" placeholder="******************" />
-      <Hint>Make it as long and as crazy as you'd like</Hint>
+      <Hint>Make it as long and as crazy as you'd like.</Hint>
     </Field>
     <Footer>
       <Button type="submit">Register Now</Button>

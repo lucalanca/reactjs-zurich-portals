@@ -24,6 +24,9 @@ export const ModalCard = styled.div`
   border-radius: 4px;
   min-width: 300px;
   max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ModalHeader = styled.div`
@@ -31,12 +34,15 @@ export const ModalHeader = styled.div`
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   position: relative;
+  flex-shrink: 0;
 
   padding: 1rem 2rem;
 `;
 
 export const ModalBody = styled.div`
-  padding: 2rem 2rem 1rem;
+  padding: 2rem 2rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 `;
 
 export const ModalClose = styled.button`
