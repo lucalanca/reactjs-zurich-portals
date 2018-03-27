@@ -19,13 +19,17 @@ injectGlobal`
   body {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 100%;
-    
     margin: 0;
+  }
+
+  #root {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
   }
+
 
   /**
    * 1. Change the font styles in all browsers.

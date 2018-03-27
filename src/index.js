@@ -1,13 +1,19 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import v4 from "uuid/v4";
 import styled from "styled-components";
 import MdClose from "react-icons/lib/md/close";
 
+import MdSend from "react-icons/lib/md/send";
+import MdStar from "react-icons/lib/md/star";
+import MdDelete from "react-icons/lib/md/delete";
+import MdPeople from "react-icons/lib/md/people";
+
 import "./Base";
 import Button from "./Button";
 import RegisterForm from "./RegisterForm";
+import DrawerLayout from "./DrawerLayout";
 
 const ModalContainer = styled.div`
   position: fixed;
@@ -94,6 +100,8 @@ class Modal extends Component {
     isOpened: false
   };
 
+  closeButton = null;
+
   constructor(props) {
     super(props);
     this.id = v4();
@@ -101,6 +109,12 @@ class Modal extends Component {
   }
 
   onClose = evt => this.props.onClose(evt);
+
+  componentDidUpdate(previousProps) {
+    if (!previousProps.isOpened && this.props.isOpened) {
+      this.closeButton.focus();
+    }
+  }
 
   render() {
     const { isOpened, title, children } = this.props;
@@ -120,6 +134,9 @@ class Modal extends Component {
               id={`${this.id}-close`}
               title="Close dialog"
               onClick={this.onClose}
+              innerRef={x => {
+                this.closeButton = x;
+              }}
             >
               <ModalIcon />
             </ModalClose>
@@ -130,6 +147,41 @@ class Modal extends Component {
     );
   }
 }
+
+const Main = styled.main`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+`;
+
+const Sidebar = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+`;
+
+const SidebarButton = styled.button`
+  color: rgba(255, 255, 255, 1);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  opacity: ${({ isActive }) => (isActive ? 1 : 0.6)};
+
+  padding: 1rem 1.5rem;
+
+  &:hover {
+    opacity: ${({ isActive }) => (isActive ? 1 : 0.8)};
+  }
+  & > svg {
+    width: 100%;
+    height: auto;
+    color: inherit;
+    fill: currentColor;
+  }
+`;
 
 class App extends Component {
   state = {
@@ -145,21 +197,51 @@ class App extends Component {
   toggleModal = () =>
     this.setState(({ isOpened }) => ({ isOpened: !isOpened }));
 
-  closeModal = () => this.setState({ isOpened: false });
+  closeModal = () => {
+    this.setState({ isOpened: false });
+  };
+
+  openButton = null;
 
   render() {
     const { isOpened } = this.state;
     return (
-      <main>
-        <Button onClick={this.toggleModal}>Open Modal</Button>
-        <Modal
-          isOpened={isOpened}
-          onClose={this.closeModal}
-          title="Registration Form"
-        >
-          <RegisterForm />
-        </Modal>
-      </main>
+      <DrawerLayout
+        renderDrawer={({ isOpened }) => (
+          <Sidebar>
+            <SidebarButton isActive>
+              <MdSend />
+            </SidebarButton>
+            <SidebarButton>
+              <MdStar />
+            </SidebarButton>
+            <SidebarButton>
+              <MdDelete />
+            </SidebarButton>
+            <SidebarButton>
+              <MdPeople />
+            </SidebarButton>
+          </Sidebar>
+        )}
+      >
+        <Main>
+          <Button
+            onClick={this.toggleModal}
+            ref={x => {
+              this.openButton = x;
+            }}
+          >
+            Open Modal
+          </Button>
+          <Modal
+            isOpened={isOpened}
+            onClose={this.closeModal}
+            title="Registration Form"
+          >
+            <RegisterForm />
+          </Modal>
+        </Main>
+      </DrawerLayout>
     );
   }
 }
