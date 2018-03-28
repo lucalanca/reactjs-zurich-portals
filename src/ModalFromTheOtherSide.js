@@ -4,8 +4,6 @@ import PropTypes from "prop-types";
 import v4 from "uuid/v4";
 import * as ModalStyle from "./Modal.styles";
 
-const modalRoot = document.getElementById("modalRoot");
-
 export default class Modal extends Component {
   static propTypes = {
     isOpened: PropTypes.bool,
@@ -37,19 +35,11 @@ export default class Modal extends Component {
 
   // NEW STUFF
   componentDidMount() {
-    // The portal element is inserted in the DOM tree after
-    // the Modal's children are mounted, meaning that children
-    // will be mounted on a detached DOM node. If a child
-    // component requires to be attached to the DOM tree
-    // immediately when mounted, for example to measure a
-    // DOM node, or uses 'autoFocus' in a descendant, add
-    // state to Modal and only render the children when Modal
-    // is inserted in the DOM tree.
-    modalRoot.appendChild(this.el);
+    document.body.appendChild(this.el);
   }
 
   componentWillUnmount() {
-    modalRoot.removeChild(this.el);
+    document.body.removeChild(this.el);
   }
 
   componentDidUpdate(previousProps) {
