@@ -51,7 +51,11 @@ export default class Modal extends Component {
   render() {
     const { isOpened, title, children } = this.props;
 
-    const JsxImplementation = (
+    // const JsxImplementation = (
+
+    // );
+
+    return ReactDOM.createPortal(
       <ModalStyle.ModalContainer
         id={this.id}
         isOpened={isOpened}
@@ -77,9 +81,8 @@ export default class Modal extends Component {
           </ModalStyle.ModalHeader>
           <ModalStyle.ModalBody>{children}</ModalStyle.ModalBody>
         </ModalStyle.ModalCard>
-      </ModalStyle.ModalContainer>
+      </ModalStyle.ModalContainer>,
+      this.el
     );
-
-    return ReactDOM.createPortal(JsxImplementation, this.el);
   }
 }

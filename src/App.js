@@ -4,8 +4,8 @@ import Button from "./Button";
 import RegisterForm from "./RegisterForm";
 import Modal from "./Modal";
 
-// import DrawerLayout from "./DrawerLayout";
-// import Sidebar from "./Sidebar";
+import DrawerLayout from "./DrawerLayout";
+import Sidebar from "./Sidebar";
 
 // https://drafts.csswg.org/css-transforms-1/#transform-rendering
 // https://github.com/w3c/csswg-drafts/issues/913
@@ -13,8 +13,8 @@ import Modal from "./Modal";
 
 // import Modal from "./ModalFromTheOtherSide";
 
-// import withPortal from "./withPortal";
-// const PortalizedModal = withPortal(Modal);
+import withPortal from "./withPortal";
+const PortalizedModal = withPortal(Modal);
 
 class App extends Component {
   state = {
@@ -30,28 +30,28 @@ class App extends Component {
 
     return (
       <Fragment>
-        {/* <DrawerLayout renderDrawer={() => <Sidebar />}> */}
-        <main>
-          <Button
-            onClick={() =>
-              this.setState(({ isOpened }) => ({ isOpened: !isOpened }))
-            }
-            innerRef={x => {
-              this.openButton = x;
-            }}
-          >
-            Open Modal
-          </Button>
-          <Modal
-            isOpened={isOpened}
-            triggerEl={this.openButton}
-            onClose={() => this.setState({ isOpened: false })}
-            title="Registration Form"
-          >
-            <RegisterForm />
-          </Modal>
+        <DrawerLayout renderDrawer={() => <Sidebar />}>
+          <main>
+            <Button
+              onClick={() =>
+                this.setState(({ isOpened }) => ({ isOpened: !isOpened }))
+              }
+              innerRef={x => {
+                this.openButton = x;
+              }}
+            >
+              Open Modal
+            </Button>
+            <PortalizedModal
+              isOpened={isOpened}
+              triggerEl={this.openButton}
+              onClose={() => this.setState({ isOpened: false })}
+              title="Registration Form"
+            >
+              <RegisterForm />
+            </PortalizedModal>
 
-          {/* <Button
+            {/* <Button
               onClick={() =>
                 this.setState(({ isOpened2 }) => ({ isOpened2: !isOpened2 }))
               }
@@ -70,8 +70,8 @@ class App extends Component {
             >
               <p>What up?</p>
             </Modal> */}
-        </main>
-        {/* </DrawerLayout> */}
+          </main>
+        </DrawerLayout>
       </Fragment>
     );
   }
